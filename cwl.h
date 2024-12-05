@@ -12,6 +12,7 @@
 #elif __linux__
 
 #include <sys/socket.h>
+#include <netinet/in.h>
 
 #endif
 
@@ -24,14 +25,19 @@
 typedef struct {
     #ifdef __linux__
     // Listening socket
-    int LSockfd;
+    int ListenFD;
     // Connected socket
-    int CSockfd;
+    int ConnFD;
+
+    // server Address
+    struct sockaddr_in addr;
+
     #endif
     int port;
 } CWL_SERVER;
 
 int CWL_INIT(int port, CWL_SERVER *serv);
 int CWL_CLOSE(CWL_SERVER *serv);
+int CWL_SETREQFUNC(int (*func)());
 
 #endif
