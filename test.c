@@ -4,6 +4,7 @@
 void onReq()
 {
     printf("it works");
+    CWL_RESPONSE(1, "");
     return;
 }
 

@@ -16,6 +16,8 @@
 
 #endif
 
+#include <stdlib.h>
+#include <stdio.h>
 
 // Error codes
 #define CWL_SUCCESS_CODE 0
@@ -38,6 +40,7 @@ typedef struct {
 
 int CWL_INIT(int port, CWL_SERVER *serv);
 int CWL_CLOSE(CWL_SERVER *serv);
+int CWL_RESPONSE(int opt, char *html);
 int CWL_SETREQFUNC(int (*func)());
 
 #endif
