@@ -3,8 +3,7 @@
 
 void onReq()
 {
-    printf("it works");
-    CWL_RESPONSE(1, "");
+    CWL_RESPONSE(1, "IT WORKS");
     return;
 }
 
@@ -12,8 +11,8 @@ int main()
 {
     CWL_SERVER server;
 
-    CWL_INIT(80, &server);
-
+    CWL_INIT(6969, &server);
+while (1)
     CWL_SETREQFUNC(onReq);
 
     CWL_CLOSE(&server);
