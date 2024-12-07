@@ -1,31 +1,16 @@
 #include "cwl.h"
-#include <stdio.h>
 
-int main()
+// Request handler function
+void onreq(int sockfd)
 {
-    if (CWL_INIT(8080) != CWL_SUCCESS_CODE) {
-        printf("Failed to initialize server.\n");
-        return 1;
-    }
-
-    // This would run indefinitely to accept connections
-    // You can modify the test to use `CWL_SETREQFUNC` and test your handlers.
-    
-    return 0;
+    // For simplicity, you can send a 200 OK response with a static file
+    CWL_RESPONSE(sockfd, "index.html");
 }
 
-
-
-
-/*
-    how it should be:
-    
-    #include "cwl.h"
-
-    int main(void)
-    {
-        CWL_INIT(80);
-        
-    }
-
-*/
+int main(void)
+{
+    CWL_INIT(988);               // Initialize the server on port 988
+    CWL_SETREQFUNC(onreq);       // Set the request handler function
+    CWL_LISTEN();                // Start listening for incoming requests
+    CWL_CLOSE();                 // Close the server after handling requests
+}

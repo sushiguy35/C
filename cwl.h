@@ -46,8 +46,8 @@ typedef struct {
 } CWL_SERVER;
 
 int CWL_INIT(int port);
-int CWL_CLOSE(CWL_SERVER *serv);
-int CWL_RESPONSE(int opt, char *html);
+int CWL_CLOSE();
+int CWL_RESPONSE(int sockfd, char *htmlFile);
 int CWL_SETREQFUNC(int (*func)());
 
 #endif
