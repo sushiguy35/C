@@ -1,19 +1,31 @@
 #include "cwl.h"
 #include <stdio.h>
 
-void onReq()
-{
-    CWL_RESPONSE(1, "IT WORKS");
-    return;
-}
-
 int main()
 {
-    CWL_SERVER server;
+    if (CWL_INIT(8080) != CWL_SUCCESS_CODE) {
+        printf("Failed to initialize server.\n");
+        return 1;
+    }
 
-    CWL_INIT(6969, &server);
-while (1)
-    CWL_SETREQFUNC(onReq);
-
-    CWL_CLOSE(&server);
+    // This would run indefinitely to accept connections
+    // You can modify the test to use `CWL_SETREQFUNC` and test your handlers.
+    
+    return 0;
 }
+
+
+
+
+/*
+    how it should be:
+    
+    #include "cwl.h"
+
+    int main(void)
+    {
+        CWL_INIT(80);
+        
+    }
+
+*/

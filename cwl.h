@@ -1,3 +1,11 @@
+//----------------------------------------------------------------------------
+//              CWL - A C Web Library
+//  CWL is a basic c library to make websites with C backend code
+//  Maker: Sushiguy35. May be used or changed by anyone if you give me credits 
+//----------------------------------------------------------------------------
+
+
+
 #ifndef CWL_H
 #define CWL_H
 
@@ -26,19 +34,18 @@
 // Server Structure
 typedef struct {
     #ifdef __linux__
-    // Listening socket
-    int ListenFD;
-    // Connected socket
-    int ConnFD;
+    int sockfd;
 
     // server Address
     struct sockaddr_in addr;
+    // Length of server address
+    int addrLen;
 
     #endif
     int port;
 } CWL_SERVER;
 
-int CWL_INIT(int port, CWL_SERVER *serv);
+int CWL_INIT(int port);
 int CWL_CLOSE(CWL_SERVER *serv);
 int CWL_RESPONSE(int opt, char *html);
 int CWL_SETREQFUNC(int (*func)());
